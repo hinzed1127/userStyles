@@ -89,4 +89,55 @@
     font-size: 11.5px !important;
   }
 
+  /* ── Dark mode ── */
+  @media (prefers-color-scheme: dark) {
+    body,
+    td,
+    .itemlist {
+      background: #1c1c1c !important;
+      color: #d4d4d4 !important;
+    }
+
+    .titlelink {
+      color: #d4d4d4 !important;
+    }
+
+    a:visited .titlelink,
+    .titlelink:visited {
+      color: #888 !important;
+    }
+
+    .subtext,
+    .subtext a {
+      color: #555 !important;
+    }
+
+    .rank {
+      color: #555 !important;
+    }
+
+    .sitebit.comhead,
+    .sitebit.comhead a {
+      color: #555 !important;
+    }
+
+    tr:not(:first-child) > .subtext {
+      border-bottom-color: #2a2a2a !important;
+    }
+
+    td[bgcolor='#ff6600'],
+    td[bgcolor='#ff6600'] table td {
+      background: #b84700 !important;
+    }
+
+    td[bgcolor='#ff6600'] a {
+      color: rgba(255, 255, 255, 0.75) !important;
+    }
+
+    .subtext a:last-child {
+      color: #e07030 !important;
+      background: rgba(224, 112, 48, 0.12) !important;
+    }
+  }
+
 }
