@@ -44,5 +44,32 @@
     return stories;
   }
 
+  // Re-inserts stories into tbody in the given order
+  function renderStories(tbody, stories) {
+    stories.forEach(({ athing, subtext, spacer }) => {
+      if (athing) athing.remove();
+      if (subtext) subtext.remove();
+      if (spacer) spacer.remove();
+    });
+
+    const moreRow = tbody.querySelector('.morespace') ||
+      tbody.querySelector('td.title > a[href*="news?p="]')?.closest('tr') ||
+      null;
+
+    stories.forEach(({ athing, subtext, spacer }) => {
+      if (athing) tbody.insertBefore(athing, moreRow);
+      if (subtext) tbody.insertBefore(subtext, moreRow);
+      if (spacer) tbody.insertBefore(spacer, moreRow);
+    });
+  }
+
+  // Applies the named sort to the stories array and re-renders
+  function applySort(tbody, stories, sort) {
+    const ordered = sort === 'comments'
+      ? [...stories].sort((a, b) => b.commentCount - a.commentCount)
+      : [...stories];
+    renderStories(tbody, ordered);
+  }
+
   main();
 })();
