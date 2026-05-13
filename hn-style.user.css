@@ -22,4 +22,25 @@
     box-sizing: border-box !important;
   }
 
+  /* ── Typography ── */
+  .titlelink {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #1a1a1a !important;
+  }
+
+  .subtext {
+    font-size: 12px !important;
+  }
+
+  .rank {
+    color: #aaa !important;
+  }
+
+  .sitebit.comhead,
+  .sitebit.comhead a {
+    color: #aaa !important;
+    font-size: 11px !important;
+  }
+
 }
