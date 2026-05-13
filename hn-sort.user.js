@@ -12,9 +12,36 @@
 (function () {
   'use strict';
 
-  // entry point — called once DOM is ready
   function main() {
-    // implementation goes here
+    const tbody = document.querySelector('.itemlist tbody');
+    if (!tbody) return;
+
+    const stories = stashStories(tbody);
+    if (stories.length === 0) return;
+  }
+
+  // Returns an array of story objects: { athing, subtext, spacer, commentCount }
+  function stashStories(tbody) {
+    const rows = Array.from(tbody.children);
+    const stories = [];
+
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      if (!row.classList.contains('athing')) continue;
+
+      const subtextRow = rows[i + 1] || null;
+      const spacerRow = rows[i + 2] || null;
+
+      const commentLink = subtextRow
+        ? subtextRow.querySelector('.subtext a:last-child')
+        : null;
+      const commentText = commentLink ? commentLink.textContent.trim() : '';
+      const commentCount = parseInt(commentText, 10) || 0;
+
+      stories.push({ athing: row, subtext: subtextRow, spacer: spacerRow, commentCount });
+    }
+
+    return stories;
   }
 
   main();
