@@ -18,6 +18,8 @@
 
     const stories = stashStories(tbody);
     if (stories.length === 0) return;
+
+    injectSortToggle(tbody, stories);
   }
 
   // Returns an array of story objects: { athing, subtext, spacer, commentCount }
@@ -69,6 +71,66 @@
       ? [...stories].sort((a, b) => b.commentCount - a.commentCount)
       : [...stories];
     renderStories(tbody, ordered);
+  }
+
+  function injectSortToggle(tbody, stories) {
+    const navTd = document.querySelector('td[style*="color: white"]');
+    if (!navTd) return;
+
+    const headerTr = navTd.closest('tr');
+    if (!headerTr) return;
+
+    const td = document.createElement('td');
+    td.style.cssText = 'text-align: right; padding-right: 8px; white-space: nowrap;';
+
+    const label = document.createElement('span');
+    label.style.cssText = 'font: 10pt verdana; color: rgba(255,255,255,0.7);';
+    label.textContent = 'Sort: ';
+
+    const defaultLink = document.createElement('a');
+    defaultLink.href = '#';
+    defaultLink.textContent = 'Default';
+    defaultLink.dataset.sort = 'default';
+
+    const sep = document.createElement('span');
+    sep.style.cssText = 'font: 10pt verdana; color: rgba(255,255,255,0.5);';
+    sep.textContent = ' · ';
+
+    const commentsLink = document.createElement('a');
+    commentsLink.href = '#';
+    commentsLink.textContent = 'Most Comments';
+    commentsLink.dataset.sort = 'comments';
+
+    td.appendChild(label);
+    td.appendChild(defaultLink);
+    td.appendChild(sep);
+    td.appendChild(commentsLink);
+    headerTr.appendChild(td);
+
+    function styleLinks(activeSort) {
+      [defaultLink, commentsLink].forEach(link => {
+        const isActive = link.dataset.sort === activeSort;
+        link.style.cssText = isActive
+          ? 'font: 10pt verdana; color: white; text-decoration: none;'
+          : 'font: 10pt verdana; color: rgba(255,255,255,0.6); text-decoration: underline; cursor: pointer;';
+      });
+    }
+
+    const savedSort = localStorage.getItem('hn-sort') || 'default';
+    styleLinks(savedSort);
+    if (savedSort !== 'default') {
+      applySort(tbody, stories, savedSort);
+    }
+
+    [defaultLink, commentsLink].forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const sort = link.dataset.sort;
+        localStorage.setItem('hn-sort', sort);
+        styleLinks(sort);
+        applySort(tbody, stories, sort);
+      });
+    });
   }
 
   main();
