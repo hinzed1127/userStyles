@@ -13,7 +13,7 @@
   'use strict';
 
   function main() {
-    const tbody = document.querySelector('.itemlist tbody');
+    const tbody = document.querySelector('#bigbox table tbody');
     if (!tbody) return;
 
     const stories = stashStories(tbody);
@@ -55,7 +55,7 @@
     });
 
     const moreRow = tbody.querySelector('.morespace') ||
-      tbody.querySelector('td.title > a[href*="news?p="]')?.closest('tr') ||
+      tbody.querySelector('a.morelink')?.closest('tr') ||
       null;
 
     stories.forEach(({ athing, subtext, spacer }) => {
@@ -74,7 +74,7 @@
   }
 
   function injectSortToggle(tbody, stories) {
-    const navTd = document.querySelector('td[style*="color: white"]');
+    const navTd = document.querySelector('.pagetop a[href*="login"]')?.closest('td');
     if (!navTd) return;
 
     const headerTr = navTd.closest('tr');
