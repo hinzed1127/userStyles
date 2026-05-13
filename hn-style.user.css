@@ -10,6 +10,16 @@
 
 @-moz-document domain("news.ycombinator.com") {
 
-  /* styles go here */
+  /* ── Layout ── */
+  body {
+    font-family: system-ui, -apple-system, sans-serif !important;
+  }
+
+  #hnmain {
+    max-width: 720px !important;
+    margin: 0 auto !important;
+    padding: 0 12px !important;
+    box-sizing: border-box !important;
+  }
 
 }
