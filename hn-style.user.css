@@ -67,4 +67,16 @@
     padding: 6px 8px !important;
   }
 
+  /* ── Header ── */
+  td[bgcolor='#ff6600'],
+  td[bgcolor='#ff6600'] table td {
+    background: #e85d00 !important;
+  }
+
+  .hnname a,
+  td[bgcolor='#ff6600'] a {
+    color: white !important;
+    text-decoration: none !important;
+  }
+
 }
