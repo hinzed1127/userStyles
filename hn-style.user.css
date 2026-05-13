@@ -31,6 +31,7 @@
 
   .subtext {
     font-size: 12px !important;
+    padding-bottom: 8px !important;
   }
 
   .rank {
@@ -51,14 +52,8 @@
     height: 14px !important;
   }
 
-  /* Breathing room below subtext */
-  .subtext {
-    padding-bottom: 8px !important;
-    display: block !important;
-  }
-
-  /* Divider line — appears above each subtext row */
-  tr:not(:first-child) > .subtext {
+  /* Divider line below each story */
+  tr:not(:first-child) .subtext {
     border-bottom: 1px solid #e8e8e0 !important;
   }
 
@@ -109,19 +104,19 @@
 
     .subtext,
     .subtext a {
-      color: #555 !important;
+      color: #777 !important;
     }
 
     .rank {
-      color: #555 !important;
+      color: #777 !important;
     }
 
     .sitebit.comhead,
     .sitebit.comhead a {
-      color: #555 !important;
+      color: #777 !important;
     }
 
-    tr:not(:first-child) > .subtext {
+    tr:not(:first-child) .subtext {
       border-bottom-color: #2a2a2a !important;
     }
 
