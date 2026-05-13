@@ -43,4 +43,28 @@
     font-size: 11px !important;
   }
 
+  /* ── Spacing ── */
+
+  /* Spacer rows between stories */
+  .itemlist tr[style*="height: 5px"],
+  .itemlist tr[height='5'] {
+    height: 14px !important;
+  }
+
+  /* Breathing room below subtext */
+  .subtext {
+    padding-bottom: 8px !important;
+    display: block !important;
+  }
+
+  /* Divider line — appears above each subtext row */
+  tr:not(:first-child) > .subtext {
+    border-bottom: 1px solid #e8e8e0 !important;
+  }
+
+  /* Header: slightly more breathing room */
+  td[bgcolor='#ff6600'] {
+    padding: 6px 8px !important;
+  }
+
 }
