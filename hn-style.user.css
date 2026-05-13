@@ -1,0 +1,15 @@
+/* ==UserStyle==
+@name         Hacker News — Refined
+@namespace    https://github.com/hinzed1127/userStyles
+@version      1.0.0
+@description  Centered layout, better typography, dark mode, comment pill
+@author       Dan Hinze
+@homepageURL  https://github.com/hinzed1127/userStyles
+@match        https://news.ycombinator.com/*
+==/UserStyle== */
+
+@-moz-document domain("news.ycombinator.com") {
+
+  /* styles go here */
+
+}
